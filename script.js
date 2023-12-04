@@ -1,4 +1,4 @@
-const cores = [
+const htmlcores = [
   { nome: "Branco", hex: "#FFFFFF" },
   { nome: "Preto", hex: "#000000" },
   { nome: "Vermelho", hex: "#FF0000" },
@@ -144,12 +144,44 @@ const cores = [
   { nome: "Ferrugem", hex: "#B7410E" }
 ];
 
-function processData(csvContent){
-    const lines = csvContent.split('\n');
-    lines.forEach(line => {
-        const data = line.split(',');
-        nomeC = data[0]
-        hexColor = data[1]
-    });
-}
+// Criando um subvetor com pelo menos 10 cores
+const cor_selecionada = htmlcores.slice(0, 10);
 
+// Mostrando as cores selecionadas para o usuário
+const colorsDiv = document.getElementById("colors");
+cor_selecionada.forEach(color => {
+  const square = document.createElement("div");
+  square.classList.add("square");
+  square.style.backgroundColor = color.hex;
+  colorsDiv.appendChild(square);
+});
+
+// Selecionando uma cor aleatória
+const cpu = cor_selecionada[Math.floor(Math.random() * cor_selecionada.length)];
+console.log(cpu.nome);
+let Tentativa = 3;
+
+
+function checkGuess() {
+  const textodigitado = document.getElementById("guessInput");
+  const escolha = textodigitado.value.trim();
+  const resultado = document.getElementById("result");
+  const tentativas = document.getElementById("Tentativa");
+
+  if (Tentativa > 0) {
+    if (escolha.toLowerCase() === cpu.nome.toLowerCase()) {
+      resultado.textContent = "Parabéns! Você acertou!";
+      document.body.style.backgroundColor = cpu.hex;
+    } else {
+      Tentativa--;
+      tentativas.textContent = Tentativa;
+      if (Tentativa === 0) {
+        resultado.textContent = `Acabaram as tentativas! A cor era ${cpu.nome}. Você perdeu.`;
+      } else {
+        resultado.textContent = `Tente novamente! Tentativas restantes: ${Tentativa}`;
+      }
+    }
+  } else {
+    resultado.textContent = `Acabaram as tentativas! A cor era ${cpu.nome}. Você perdeu.`;
+  }
+}

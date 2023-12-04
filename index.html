@@ -1,19 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="script.js">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
+
 <body>
-    <div>
-        <h1> Jogo da Adivinhação</h1>
-        <p>Tente adivinhar a cor que o computador escolheu</p>
-        <label for="C/name"></label>
-        <input type="text" id="color">
-        <button type="button" id="button">Enviar</button>
-    </div>
+  <h1>Jogo de Adivinhação de Cores</h1>
+  <div id="colors"></div>
+  <div>
+    <label for="guessInput">Tente adivinhar a cor:</label>
+    <input type="text" id="guessInput">
+    <button onclick="checkGuess()">Adivinhar</button>
+    <p>Tentativas restantes: <span id="Tentativa">3</span></p>
+    <p id="result"></p>
+    <p id="dica"></p>
+  </div>
+  <script src="script.js"></script>
+
+  <!--
+  This script places a badge on your repl's full-browser view back to your repl's cover
+  page. Try various colors for the theme: dark, light, red, orange, yellow, lime, green,
+  teal, blue, blurple, magenta, pink!
+  -->
+  <script src="https://replit.com/public/js/replit-badge-v2.js" theme="dark" position="bottom-right"></script>
 </body>
+
 </html>
